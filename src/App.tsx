@@ -1,9 +1,17 @@
+import { Spin } from "antd";
+import { Suspense } from "react";
+import { Route, Routes } from "react-router-dom";
+import { Login, SignUp } from "./utils/lazyLoadingComponent";
+
 function App() {
   return (
     <>
-      <div>
-        <h1 className="text-1xl font-bold underline">Todo Board</h1>
-      </div>
+      <Suspense fallback={<Spin />}>
+        <Routes>
+          <Route path='/' element={<Login />} />
+          <Route path='/signup' element={<SignUp />} />
+        </Routes>
+      </Suspense>
     </>
   );
 }
