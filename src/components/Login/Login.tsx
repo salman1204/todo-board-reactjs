@@ -47,12 +47,14 @@ const Login: React.FC = () => {
           >
             <Input.Password placeholder='Enter Password' />
           </Form.Item>
+
+          <Form.Item>
+            <Button type='primary' htmlType='submit' className='w-full'>
+              Login
+            </Button>
+          </Form.Item>
         </Form>
-        <Form.Item>
-          <Button type='primary' htmlType='submit' className='w-full'>
-            Submit
-          </Button>
-        </Form.Item>
+
         <hr className='border-t-1 text-neutral-500' />
         <p
           className='mt-5 cursor-pointer text-center text-blue-500 '
