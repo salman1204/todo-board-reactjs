@@ -1,7 +1,7 @@
 import { Spin } from "antd";
 import { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
-import { Login, SignUp } from "./utils/lazyLoadingComponent";
+import { Board, Login, SignUp } from "./utils/lazyLoadingComponent";
 
 function App() {
   return (
@@ -10,6 +10,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Login />} />
           <Route path='/signup' element={<SignUp />} />
+          <Route path='/board' element={<Board />} />
         </Routes>
       </Suspense>
     </>

@@ -27,7 +27,9 @@ const SignUp = () => {
           style={{ width: "10rem" }}
         />
 
-        <h3 className='my-5 text-center text-neutral-500'>Log in to TODO</h3>
+        <h3 className='my-5 text-center text-neutral-500'>
+          Sign up for your account
+        </h3>
         <Form
           initialValues={{ remember: true }}
           autoComplete='off'
