@@ -1,15 +1,29 @@
 import logo from "@/assets/logo.webp";
 import { LoginFormTypes } from "@/types/authentication";
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, message } from "antd";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { passwordRules, userEmailRules } from "./login-form-rules";
+import { useLogin } from '@/hooks/mutations/auth';
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
 
-  const onFinish = (values: any) => {
-    console.log("Success:", values);
+  const { mutate } = useLogin();
+
+  const onFinish = (values: LoginFormTypes) => {
+    mutate(values, {
+      onSuccess: (data) => {
+        localStorage.setItem("todo_access_token", data?.data?.access);
+        localStorage.setItem("todo_refresh_token", data?.data?.refresh);
+        navigate("/board", { replace: true });
+      },
+      onError: () => {
+        message.error({
+          content: "Something went wrong",
+        });
+      },
+    });
   };
 
   return (
