@@ -1,6 +1,8 @@
 import logo from "@/assets/logo.webp";
+import { useSignupUser } from "@/hooks/mutations/auth";
 import { SignupFormTypes } from "@/types/authentication";
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, message } from "antd";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import {
   confirmPasswordRules,
@@ -8,12 +10,27 @@ import {
   userEmailRules,
 } from "./signup-form-rules";
 
-const SignUp = () => {
+const SignUp: React.FC = () => {
   const navigate = useNavigate();
 
-  const onFinish = (values: any) => {
-    console.log("Success:", values);
+  const { mutate } = useSignupUser();
+
+  const onFinish = (values: SignupFormTypes) => {
+    mutate(values, {
+      onSuccess: () => {
+        message.success({
+          content: "Sign Up Successfully",
+        });
+        navigate("/", { replace: true });
+      },
+      onError: () => {
+        message.error({
+          content: "Something went wrong",
+        });
+      },
+    });
   };
+
   return (
     <div className='min-w-screen flex min-h-screen items-center justify-center bg-slate-100'>
       <div
@@ -37,7 +54,7 @@ const SignUp = () => {
           className='justify-centet align-center mt-7 flex-row'
         >
           <Form.Item<SignupFormTypes>
-            name='username'
+            name='email'
             rules={userEmailRules}
             validateTrigger={"onBlur"}
           >
@@ -53,7 +70,7 @@ const SignUp = () => {
           </Form.Item>
 
           <Form.Item<SignupFormTypes>
-            name='confirmPassword'
+            name='confirm_password'
             rules={confirmPasswordRules}
             validateTrigger={"onBlur"}
           >

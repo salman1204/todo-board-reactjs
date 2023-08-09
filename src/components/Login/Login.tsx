@@ -33,7 +33,7 @@ const Login: React.FC = () => {
           className='justify-centet align-center mt-7 flex-row'
         >
           <Form.Item<LoginFormTypes>
-            name='username'
+            name='email'
             rules={userEmailRules}
             validateTrigger={"onBlur"}
           >

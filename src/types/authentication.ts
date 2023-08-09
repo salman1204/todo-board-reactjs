@@ -1,8 +1,8 @@
 export interface LoginFormTypes {
-  username?: string;
+  email?: string;
   password?: string;
 }
 
 export interface SignupFormTypes extends LoginFormTypes {
-  confirmPassword?: string;
+  confirm_password?: string;
 }
