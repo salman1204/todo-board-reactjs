@@ -1,10 +1,10 @@
 import logo from "@/assets/logo.webp";
+import { useLogin } from "@/hooks/mutations/auth";
 import { LoginFormTypes } from "@/types/authentication";
 import { Button, Form, Input, message } from "antd";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { passwordRules, userEmailRules } from "./login-form-rules";
-import { useLogin } from '@/hooks/mutations/auth';
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
@@ -28,16 +28,8 @@ const Login: React.FC = () => {
 
   return (
     <div className='min-w-screen flex min-h-screen items-center justify-center bg-slate-100'>
-      <div
-        className='shadow-white-1000/100 m-1 bg-white p-10 shadow-lg'
-        style={{ width: "25rem" }}
-      >
-        <img
-          src={logo}
-          alt='Logo'
-          className='mx-auto block'
-          style={{ width: "10rem" }}
-        />
+      <div className='shadow-white-1000/100 m-1 w-96 bg-white p-10 shadow-lg'>
+        <img src={logo} alt='Logo' className='mx-auto block w-40' />
 
         <h3 className='my-5 text-center text-neutral-500'>Log in to TODO</h3>
         <Form

@@ -34,14 +34,12 @@ const SignUp: React.FC = () => {
   return (
     <div className='min-w-screen flex min-h-screen items-center justify-center bg-slate-100'>
       <div
-        className='shadow-white-1000/100 m-1 bg-white p-10 shadow-lg'
-        style={{ width: "25rem" }}
+        className='shadow-white-1000/100 m-1 bg-white p-10 shadow-lg w-96'
       >
         <img
           src={logo}
           alt='Logo'
-          className='mx-auto block'
-          style={{ width: "10rem" }}
+          className='mx-auto block w-40'
         />
 
         <h3 className='my-5 text-center text-neutral-500'>
