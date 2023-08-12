@@ -1,6 +1,6 @@
 import { useGetLabels } from "@/hooks/queries/label-queries";
 import React from "react";
-import AddnewLabel from "../Label/AddnewLabel";
+import AddnewLabel from "../Label/AddNewLabel";
 import Label from "../Label/Label";
 import Topbar from "../Topbar/Topbar";
 
