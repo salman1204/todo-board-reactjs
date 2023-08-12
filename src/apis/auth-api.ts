@@ -1,4 +1,4 @@
-import { LoginFormTypes, SignupFormTypes } from "@/types/authentication";
+import { LoginFormTypes, SignupFormTypes } from "@/types/authentication-types";
 import { BASE_API_URL } from "@/utils/envVeriables";
 import axios from "axios";
 

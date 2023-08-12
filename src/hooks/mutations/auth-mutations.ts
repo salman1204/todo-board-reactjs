@@ -1,5 +1,5 @@
-import { loginUser, signupUser } from "@/apis/auth";
-import { LoginFormTypes, SignupFormTypes } from "@/types/authentication";
+import { loginUser, signupUser } from "@/apis/auth-api";
+import { LoginFormTypes, SignupFormTypes } from "@/types/authentication-types";
 import { useMutation } from "@tanstack/react-query";
 
 export const useSignupUser = () => {

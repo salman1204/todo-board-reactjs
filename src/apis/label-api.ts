@@ -1,5 +1,5 @@
-import { HttpResponse } from "@/types/http";
-import { LabelDataTypes } from "@/types/label";
+import { HttpResponse } from "@/types/http-types";
+import { LabelDataTypes } from "@/types/label-types";
 import { instance } from "@/utils/axiosIntercepter";
 import { BASE_API_URL } from "@/utils/envVeriables";
 

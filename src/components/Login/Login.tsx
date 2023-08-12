@@ -1,6 +1,6 @@
 import logo from "@/assets/logo.webp";
-import { useLogin } from "@/hooks/mutations/auth";
-import { LoginFormTypes } from "@/types/authentication";
+import { useLogin } from "@/hooks/mutations/auth-mutations";
+import { LoginFormTypes } from "@/types/authentication-types";
 import { Button, Form, Input, message } from "antd";
 import React from "react";
 import { useNavigate } from "react-router-dom";

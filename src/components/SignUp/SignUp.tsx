@@ -1,6 +1,6 @@
 import logo from "@/assets/logo.webp";
-import { useSignupUser } from "@/hooks/mutations/auth";
-import { SignupFormTypes } from "@/types/authentication";
+import { useSignupUser } from "@/hooks/mutations/auth-mutations";
+import { SignupFormTypes } from "@/types/authentication-types";
 import { Button, Form, Input, message } from "antd";
 import React from "react";
 import { useNavigate } from "react-router-dom";
@@ -33,14 +33,8 @@ const SignUp: React.FC = () => {
 
   return (
     <div className='min-w-screen flex min-h-screen items-center justify-center bg-slate-100'>
-      <div
-        className='shadow-white-1000/100 m-1 bg-white p-10 shadow-lg w-96'
-      >
-        <img
-          src={logo}
-          alt='Logo'
-          className='mx-auto block w-40'
-        />
+      <div className='shadow-white-1000/100 m-1 w-96 bg-white p-10 shadow-lg'>
+        <img src={logo} alt='Logo' className='mx-auto block w-40' />
 
         <h3 className='my-5 text-center text-neutral-500'>
           Sign up for your account

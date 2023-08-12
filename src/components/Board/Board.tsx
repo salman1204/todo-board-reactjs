@@ -1,4 +1,4 @@
-import { useGetLabels } from "@/hooks/queries/label";
+import { useGetLabels } from "@/hooks/queries/label-queries";
 import React from "react";
 import AddnewLabel from "../Label/AddnewLabel";
 import Label from "../Label/Label";
@@ -11,7 +11,7 @@ const Board: React.FC = () => {
     <div>
       <Topbar />
       <div className='flex h-[calc(100vh-3.7rem)] overflow-x-scroll'>
-        {labels?.data.map((label) => <Label key={label.guid} data={label} />)}
+        {labels?.data.map((label) => <Label key={label.guid} label={label} />)}
         <AddnewLabel refetch={refetch} />
       </div>
     </div>

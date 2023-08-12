@@ -1,4 +1,4 @@
-import { useLabel } from "@/hooks/mutations/label";
+import { useLabel } from "@/hooks/mutations/label-mutations";
 import { PlusOutlined } from "@ant-design/icons";
 import { Button, Form, Input, message } from "antd";
 import React, { useState } from "react";
