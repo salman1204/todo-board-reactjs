@@ -1,9 +1,8 @@
 import { useGetTicketByLabels } from "@/hooks/queries/ticket-queries";
 import { LabelDataTypes } from "@/types/label-types";
-import { PlusOutlined } from "@ant-design/icons";
-import React, { useState } from "react";
+import React from "react";
+import AddNewTicket from "../Ticket/AddNewTicket";
 import Ticket from "../Ticket/Ticket";
-import AddNewTicket from '../Ticket/AddNewTicket';
 
 interface LabelProps {
   label: LabelDataTypes;
@@ -14,14 +13,14 @@ const Label: React.FC<LabelProps> = ({ label }) => {
 
   return (
     <div className='shadow-white-1000/100 m-3 h-fit min-w-[20rem] rounded-lg bg-slate-100 p-3 shadow-md'>
-      <div>
-        <h5>{label.title}</h5>
+      <div className='mb-4 ms-3'>
+        <h4>{label.title}</h4>
       </div>
 
       {tickets?.data.map((ticket) => (
         <Ticket key={ticket.guid} ticket={ticket} />
       ))}
-      <AddNewTicket label_guid={label.guid} refetch= {refetch}/>
+      <AddNewTicket label_guid={label.guid} refetch={refetch} />
     </div>
   );
 };

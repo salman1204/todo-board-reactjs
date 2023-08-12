@@ -24,7 +24,7 @@ const AddNewTicket: React.FC<AddNewTicketProps> = ({ label_guid, refetch }) => {
   };
 
   return (
-    <div className='shadow-white-1000/100 mt-3 h-fit rounded-lg  bg-neutral-100 p-3 shadow-md'>
+    <div className='shadow-white-1000/100 mt-3 h-fit rounded-lg p-3 shadow-md'>
       <span onClick={() => setShowAddInput(true)} className='cursor-pointer'>
         <PlusOutlined /> Add new ticket
       </span>

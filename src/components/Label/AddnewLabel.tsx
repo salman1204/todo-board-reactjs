@@ -14,7 +14,7 @@ const AddnewLabel: React.FC<AddnewLabelProps> = ({ refetch }) => {
   const onFinish = (values: { title: string }) => {
     mutate(values, {
       onSuccess: () => {
-        message.success("New Label Added Successfully");
+        message.success("New Ticket Added Successfully");
         setShowAddInput(false);
         refetch();
       },
