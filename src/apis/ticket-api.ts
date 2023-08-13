@@ -16,7 +16,7 @@ export const addTicket = async (data: { title: string; label: string }) => {
 };
 
 export const getTicket = async (lable_guid: string) => {
-  const url = `${BASE_API_URL}/ticket?label=${lable_guid}`;
+  const url = `${BASE_API_URL}/ticket/?label=${lable_guid}`;
   const { data } = await instance.get(url);
   return data as HttpResponse<TicketDataTypes[]>;
 };

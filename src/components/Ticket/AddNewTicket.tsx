@@ -16,7 +16,7 @@ const AddNewTicket: React.FC<AddNewTicketProps> = ({ label_guid, refetch }) => {
     const payload = { ...values, label: label_guid };
     mutate(payload, {
       onSuccess: () => {
-        message.success("New Label Added Successfully");
+        message.success("New Ticket Added Successfully");
         setShowAddInput(false);
         refetch();
       },
