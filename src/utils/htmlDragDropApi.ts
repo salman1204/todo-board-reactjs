@@ -1,5 +1,3 @@
-import { patchTicketLabel } from "@/apis/ticket-api";
-
 export const onDragStart = (evt: React.DragEvent<HTMLDivElement>) => {
   let element = evt.currentTarget;
   element.classList.add("dragged");
@@ -37,13 +35,8 @@ export const onDragOver = (evt: React.DragEvent<HTMLDivElement>) => {
   evt.dataTransfer.dropEffect = "move";
 };
 
-export const onDrop = (
-  evt: React.DragEvent<HTMLDivElement>,
-  label_guid: string
-) => {
+export const onDrop = (evt: React.DragEvent<HTMLDivElement>) => {
   evt.preventDefault();
-  evt.currentTarget.classList.remove("dragged-over");
-  let ticket_guid = evt.dataTransfer.getData("text/plain");
 
-  patchTicketLabel(ticket_guid, { label: label_guid });
+  evt.currentTarget.classList.remove("dragged-over");
 };

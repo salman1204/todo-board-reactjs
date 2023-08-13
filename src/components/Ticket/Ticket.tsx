@@ -15,7 +15,7 @@ const Ticket: React.FC<TicketProps> = ({ ticket }) => {
       onDragStart={(e) => onDragStart(e)}
       onDragEnd={(e) => onDragEnd(e)}
     >
-      <p>{ticket.title}</p>
+      <p className='break-words leading-normal'>{ticket.title}</p>
     </div>
   );
 };
