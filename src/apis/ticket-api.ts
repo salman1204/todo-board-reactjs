@@ -20,3 +20,18 @@ export const getTicket = async (lable_guid: string) => {
   const { data } = await instance.get(url);
   return data as HttpResponse<TicketDataTypes[]>;
 };
+
+export const patchTicketLabel = async (
+  ticket_guid: string,
+  data: { label: string }
+) => {
+  const { data: response } = await instance({
+    method: "patch",
+    data: data,
+    url: `${BASE_API_URL}/ticket/${ticket_guid}/`,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  return response as HttpResponse<TicketDataTypes>;
+};
