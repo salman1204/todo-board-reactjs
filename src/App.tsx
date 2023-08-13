@@ -1,13 +1,12 @@
 import { Spin } from "antd";
 import { Suspense } from "react";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
+import ProtectedRoutesOnLoggedIn from "./ProtectedRoutesOnLoggedIn";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import { Board, Login, SignUp } from "./utils/lazyLoadingComponent";
+import NotFound from './components/NotFound';
 
 function App() {
-  const isLoggedIn: string | undefined =
-    localStorage.getItem("todo_access_token") || undefined;
-
   return (
     <>
       <Suspense
@@ -18,14 +17,10 @@ function App() {
         }
       >
         <Routes>
-          <Route
-            path='/'
-            element={isLoggedIn ? <Navigate replace to='/board' /> : <Login />}
-          />
-          <Route
-            path='/signup'
-            element={isLoggedIn ? <Navigate replace to='/board' /> : <SignUp />}
-          />
+          <Route element={<ProtectedRoutesOnLoggedIn />}>
+            <Route path='/' element={<Login />} />
+            <Route path='/signup' element={<SignUp />} />
+          </Route>
           <Route
             path='/board'
             element={
@@ -34,6 +29,7 @@ function App() {
               </ProtectedRoutes>
             }
           />
+          <Route path='*' element={<NotFound />} />
         </Routes>
       </Suspense>
     </>

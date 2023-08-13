@@ -5,7 +5,8 @@ interface Props {
   children: ReactNode;
 }
 const ProtectedRoutes: React.FC<Props> = ({ children }) => {
-  if (!localStorage.getItem("todo_access_token")) {
+  let token = localStorage.getItem("todo_access_token");
+  if (!token) {
     return <Navigate replace to={"/"} />;
   }
   return children;
