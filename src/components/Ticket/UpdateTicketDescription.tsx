@@ -16,7 +16,7 @@ const UpdateTicketDescription: React.FC<{ ticket: TicketDataTypes }> = ({
 
   const { mutate } = useupdateTicketDetails();
 
-  const handleUpdate = () =>
+  const handleDescriptionUpdate = () =>
     mutate(
       {
         ticket_guid: ticket?.guid,
@@ -73,7 +73,7 @@ const UpdateTicketDescription: React.FC<{ ticket: TicketDataTypes }> = ({
               <Button
                 type='primary'
                 ghost
-                onClick={() => handleUpdate()}
+                onClick={() => handleDescriptionUpdate()}
                 disabled={!value}
               >
                 Save

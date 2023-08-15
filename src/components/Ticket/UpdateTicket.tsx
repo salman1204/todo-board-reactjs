@@ -1,9 +1,10 @@
 import { TicketDataTypes } from "@/types/ticket-types";
 import { SnippetsOutlined } from "@ant-design/icons";
 import { Modal } from "antd";
+
 import React from "react";
 import UpdateTicketDescription from "./UpdateTicketDescription";
-
+import UpdateTicketExpireDate from "./UpdateTicketExpireDate";
 interface UpdateTicketProps {
   openUpdateModal: boolean;
   setOpenUpdateModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -14,7 +15,6 @@ const UpdateTicket: React.FC<UpdateTicketProps> = ({
   setOpenUpdateModal,
   ticket,
 }) => {
-  
   return (
     <Modal
       open={openUpdateModal}
@@ -31,8 +31,8 @@ const UpdateTicket: React.FC<UpdateTicketProps> = ({
           {ticket.title}
         </h2>
         <h4>In Label: {ticket?.label_title}</h4>
-        <h4>Expire On: {ticket?.expiry_date}</h4>
-        <h4>Last Update: </h4>
+
+        <UpdateTicketExpireDate ticket={ticket}/>
       </div>
       <UpdateTicketDescription ticket={ticket} />
     </Modal>

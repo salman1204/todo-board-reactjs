@@ -9,7 +9,7 @@ export interface TicketDataTypes extends LabelDataTypes {
 
 export interface updateTicketDataType {
   label?: string;
-  description?: string;
+  description?: string | null;
   title?: string;
-  expiry_date?: string;
+  expiry_date?: string | null;
 }
