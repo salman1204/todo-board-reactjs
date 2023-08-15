@@ -1,5 +1,5 @@
 import { HttpResponse } from "@/types/http-types";
-import { TicketDataTypes } from "@/types/ticket-types";
+import { TicketDataTypes, updateTicketDataType } from "@/types/ticket-types";
 import { instance } from "@/utils/axiosIntercepter";
 import { BASE_API_URL } from "@/utils/envVeriables";
 
@@ -21,12 +21,12 @@ export const getTicket = async (lable_guid: string) => {
   return data as HttpResponse<TicketDataTypes[]>;
 };
 
-export const patchTicketLabel = async (
+export const updateTicketDetails = async (
   ticket_guid: string,
-  data: { label: string }
+  data: updateTicketDataType
 ) => {
   const { data: response } = await instance({
-    method: "patch",
+    method: "put",
     data: data,
     url: `${BASE_API_URL}/ticket/${ticket_guid}/`,
     headers: {

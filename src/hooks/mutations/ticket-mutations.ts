@@ -1,4 +1,5 @@
-import { addTicket, patchTicketLabel } from "@/apis/ticket-api";
+import { addTicket, updateTicketDetails } from "@/apis/ticket-api";
+import { updateTicketDataType } from "@/types/ticket-types";
 import { useMutation } from "@tanstack/react-query";
 
 export const useTicket = () => {
@@ -7,10 +8,10 @@ export const useTicket = () => {
   });
 };
 
-export const usePatchTicketLabel = () => {
+export const useupdateTicketDetails = () => {
   return useMutation(
-    (data: { ticket_guid: string; data: { label: string } }) => {
-      return patchTicketLabel(data.ticket_guid, data.data);
+    (data: { ticket_guid: string; data: updateTicketDataType }) => {
+      return updateTicketDetails(data.ticket_guid, data.data);
     }
   );
 };

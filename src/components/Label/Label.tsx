@@ -1,4 +1,4 @@
-import { usePatchTicketLabel } from "@/hooks/mutations/ticket-mutations";
+import { useupdateTicketDetails } from "@/hooks/mutations/ticket-mutations";
 import { useGetTicketByLabels } from "@/hooks/queries/ticket-queries";
 import { LabelDataTypes } from "@/types/label-types";
 import {
@@ -21,10 +21,10 @@ const Label: React.FC<LabelProps> = ({ label }) => {
   const { data: tickets, refetch } = useGetTicketByLabels(label.guid);
   const queryClient = useQueryClient();
 
-  const { mutate } = usePatchTicketLabel();
+  const { mutate } = useupdateTicketDetails();
   return (
     <div
-      className='shadow-white-1000/100 m-3 h-fit min-w-[20rem] rounded-lg bg-slate-100 p-3 shadow-md'
+      className='shadow-white-1000/100 m-3 h-fit w-80 min-w-[20rem] rounded-lg bg-slate-100 p-3 shadow-md'
       onDragLeave={(e) => onDragLeave(e)}
       onDragEnter={(e) => onDragEnter(e)}
       onDragEnd={async (e) => {

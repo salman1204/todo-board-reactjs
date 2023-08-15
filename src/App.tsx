@@ -4,7 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import ProtectedRoutesOnLoggedIn from "./ProtectedRoutesOnLoggedIn";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import { Board, Login, SignUp } from "./utils/lazyLoadingComponent";
-import NotFound from './components/NotFound';
+import NotFound from "./components/NotFound";
 
 function App() {
   return (
