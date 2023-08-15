@@ -1,10 +1,10 @@
 import { TicketDataTypes } from "@/types/ticket-types";
-import { SnippetsOutlined } from "@ant-design/icons";
 import { Modal } from "antd";
 
 import React from "react";
 import UpdateTicketDescription from "./UpdateTicketDescription";
 import UpdateTicketExpireDate from "./UpdateTicketExpireDate";
+import UpdateTicketTitle from "./UpdateTicketTitle";
 interface UpdateTicketProps {
   openUpdateModal: boolean;
   setOpenUpdateModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -22,17 +22,12 @@ const UpdateTicket: React.FC<UpdateTicketProps> = ({
         setOpenUpdateModal(false);
       }}
       footer={null}
-      width={800}
+      width={700}
       className='modalStyle'
     >
       <div className='leading-7'>
-        <h2 className='mb-3'>
-          <SnippetsOutlined className='me-2' />
-          {ticket.title}
-        </h2>
-        <h4>In Label: {ticket?.label_title}</h4>
-
-        <UpdateTicketExpireDate ticket={ticket}/>
+        <UpdateTicketTitle ticket={ticket} />
+        <UpdateTicketExpireDate ticket={ticket} />
       </div>
       <UpdateTicketDescription ticket={ticket} />
     </Modal>

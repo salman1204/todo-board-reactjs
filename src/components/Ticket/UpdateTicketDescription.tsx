@@ -10,7 +10,7 @@ const UpdateTicketDescription: React.FC<{ ticket: TicketDataTypes }> = ({
   ticket,
 }) => {
   const [editDescription, setEditDescription] = useState(false);
-  const [value, setValue] = useState(ticket?.description);
+  const [value, setValue] = useState<string | null>(ticket?.description);
 
   const queryClient = useQueryClient();
 
@@ -27,7 +27,7 @@ const UpdateTicketDescription: React.FC<{ ticket: TicketDataTypes }> = ({
       {
         onSuccess: () => {
           queryClient.invalidateQueries(["ticket"]);
-          setEditDescription(false);
+          value != null && setEditDescription(false);
         },
       }
     );
@@ -47,6 +47,7 @@ const UpdateTicketDescription: React.FC<{ ticket: TicketDataTypes }> = ({
             onClick={() => {
               setEditDescription(true);
             }}
+            className='font-light'
           >
             {ticket?.description}
             <EditOutlined className='ms-1 cursor-pointer text-amber-500 hover:text-amber-600 ' />
@@ -62,10 +63,10 @@ const UpdateTicketDescription: React.FC<{ ticket: TicketDataTypes }> = ({
             showCount
             maxLength={200}
             defaultValue={ticket?.description}
-            value={value}
+            value={value || ""}
             style={{ height: 120, resize: "none" }}
             placeholder='Add a more detailed description...'
-            onChange={(e) => setValue(e.target.value)}
+            onChange={(e) => setValue(e.target.value ? e.target.value : null)}
             allowClear
           />
           <div className='mt-5 flex items-center justify-between'>
@@ -74,7 +75,6 @@ const UpdateTicketDescription: React.FC<{ ticket: TicketDataTypes }> = ({
                 type='primary'
                 ghost
                 onClick={() => handleDescriptionUpdate()}
-                disabled={!value}
               >
                 Save
               </Button>
@@ -86,7 +86,6 @@ const UpdateTicketDescription: React.FC<{ ticket: TicketDataTypes }> = ({
                   setEditDescription(false);
                   setValue(ticket?.description);
                 }}
-                disabled={!value}
               >
                 Cancel
               </Button>

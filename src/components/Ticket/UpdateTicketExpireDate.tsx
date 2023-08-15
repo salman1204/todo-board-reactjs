@@ -18,7 +18,7 @@ const UpdateTicketExpireDate: React.FC<{ ticket: TicketDataTypes }> = ({
 
   const { mutate } = useupdateTicketDetails();
 
-  const handleDescriptionUpdate = () =>
+  const handleExpireDateUpdate = () =>
     mutate(
       {
         ticket_guid: ticket?.guid,
@@ -36,12 +36,14 @@ const UpdateTicketExpireDate: React.FC<{ ticket: TicketDataTypes }> = ({
 
   return (
     <div className='flex items-center'>
-      <h4 onClick={() => setEditExpireDate(!editExpireDate)}>
+      <h5 onClick={() => setEditExpireDate(!editExpireDate)}>
         Expire On:
-        {!editExpireDate && ticket?.expiry_date && (
-          <span className='ms-2'>{ticket?.expiry_date}</span>
+        {!editExpireDate && (
+          <span className='ms-2 font-light'>
+            {ticket?.expiry_date != null ? ticket?.expiry_date : <span className='text-red-400 '>No Expiration Date</span> }
+          </span>
         )}
-      </h4>
+      </h5>
       {editExpireDate && (
         <DatePicker
           disabledDate={(current) => {
@@ -71,7 +73,7 @@ const UpdateTicketExpireDate: React.FC<{ ticket: TicketDataTypes }> = ({
       {editExpireDate && (
         <>
           <CheckOutlined
-            onClick={() => handleDescriptionUpdate()}
+            onClick={() => handleExpireDateUpdate()}
             className='ms-1 cursor-pointer text-amber-500 hover:text-amber-600 '
           />
 
