@@ -70,7 +70,12 @@ const UpdateTicketDescription: React.FC<{ ticket: TicketDataTypes }> = ({
           />
           <div className='mt-5 flex items-center justify-between'>
             <div>
-              <Button type='primary' ghost onClick={() => handleUpdate()}>
+              <Button
+                type='primary'
+                ghost
+                onClick={() => handleUpdate()}
+                disabled={!value}
+              >
                 Save
               </Button>
 
@@ -81,6 +86,7 @@ const UpdateTicketDescription: React.FC<{ ticket: TicketDataTypes }> = ({
                   setEditDescription(false);
                   setValue(ticket?.description);
                 }}
+                disabled={!value}
               >
                 Cancel
               </Button>

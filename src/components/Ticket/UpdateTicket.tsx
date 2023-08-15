@@ -23,6 +23,7 @@ const UpdateTicket: React.FC<UpdateTicketProps> = ({
       }}
       footer={null}
       width={800}
+      className='modalStyle'
     >
       <div className='leading-7'>
         <h2 className='mb-3'>

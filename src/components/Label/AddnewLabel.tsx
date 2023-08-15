@@ -38,10 +38,10 @@ const AddnewLabel: React.FC<AddnewLabelProps> = ({ refetch }) => {
             <Input placeholder='Label Name' />
           </Form.Item>
 
-          <Button type='primary' htmlType='submit' className='me-3'>
+          <Button type='primary' ghost htmlType='submit' className='me-3'>
             Add
           </Button>
-          <Button danger type='primary' onClick={() => setShowAddInput(false)}>
+          <Button danger type='primary' ghost onClick={() => setShowAddInput(false)}>
             Cancel
           </Button>
         </Form>
