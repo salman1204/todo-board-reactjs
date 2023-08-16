@@ -12,7 +12,6 @@ const Ticket: React.FC<TicketProps> = ({ ticket }) => {
   return (
     <div
       className='shadow-white-1000/100 mt-3 h-fit rounded-lg  bg-neutral-100 p-3 shadow-md hover:bg-violet-50 '
-      key={ticket.title}
       id={ticket.guid}
       draggable
       onDragStart={(e) => onDragStart(e)}

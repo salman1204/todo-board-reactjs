@@ -5,34 +5,41 @@ import { useQueryClient } from "@tanstack/react-query";
 import { DatePicker } from "antd";
 import dayjs from "dayjs";
 import moment from "moment";
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 
 const UpdateTicketExpireDate: React.FC<{ ticket: TicketDataTypes }> = ({
   ticket,
 }) => {
   const [editExpireDate, setEditExpireDate] = useState(false);
-  const [value, setValue] = useState<string | null>();
 
   const dateFormat = "DD-MM-YYYY";
+  const [value, setValue] = useState<string | null>(
+    moment().format(dateFormat)
+  );
+
   const queryClient = useQueryClient();
 
   const { mutate } = useupdateTicketDetails();
 
-  const handleExpireDateUpdate = () =>
-    mutate(
-      {
-        ticket_guid: ticket?.guid,
-        data: {
-          expiry_date: value,
+  const handleExpireDateUpdate = useCallback(
+    (value: string | null | undefined) => {
+      mutate(
+        {
+          ticket_guid: ticket?.guid,
+          data: {
+            expiry_date: value,
+          },
         },
-      },
-      {
-        onSuccess: () => {
-          queryClient.invalidateQueries(["ticket"]);
-          setEditExpireDate(false);
-        },
-      }
-    );
+        {
+          onSuccess: () => {
+            queryClient.invalidateQueries(["ticket"]);
+            setEditExpireDate(false);
+          },
+        }
+      );
+    },
+    [value]
+  );
 
   return (
     <div className='flex items-center'>
@@ -40,7 +47,11 @@ const UpdateTicketExpireDate: React.FC<{ ticket: TicketDataTypes }> = ({
         Expire On:
         {!editExpireDate && (
           <span className='ms-2 font-light'>
-            {ticket?.expiry_date != null ? ticket?.expiry_date : <span className='text-red-400 '>No Expiration Date</span> }
+            {ticket?.expiry_date != null ? (
+              ticket?.expiry_date
+            ) : (
+              <span className='text-red-400 '>No Expiration Date</span>
+            )}
           </span>
         )}
       </h5>
@@ -73,7 +84,7 @@ const UpdateTicketExpireDate: React.FC<{ ticket: TicketDataTypes }> = ({
       {editExpireDate && (
         <>
           <CheckOutlined
-            onClick={() => handleExpireDateUpdate()}
+            onClick={() => handleExpireDateUpdate(value)}
             className='ms-1 cursor-pointer text-amber-500 hover:text-amber-600 '
           />
 
