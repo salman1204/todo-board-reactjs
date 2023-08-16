@@ -35,3 +35,9 @@ export const updateTicketDetails = async (
   });
   return response as HttpResponse<TicketDataTypes>;
 };
+
+export const getExpireTodayTickets = async () => {
+  const url = `${BASE_API_URL}/ticket/expire-today`;
+  const { data } = await instance.get(url);
+  return data as HttpResponse<TicketDataTypes[]>;
+};
