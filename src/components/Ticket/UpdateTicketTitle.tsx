@@ -32,7 +32,7 @@ const UpdateTicketTitle: React.FC<UpdateTicketTitleProps> = ({ ticket }) => {
       },
       {
         onSuccess: () => {
-          queryClient.invalidateQueries();
+          queryClient.invalidateQueries(["ticket"]);
           setEditTicketTitle(false);
         },
       }

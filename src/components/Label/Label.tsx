@@ -43,7 +43,7 @@ const Label: React.FC<LabelProps> = ({ label }) => {
           },
           {
             onSuccess: () => {
-              queryClient.invalidateQueries();
+              queryClient.invalidateQueries(["ticket"]);
             },
           }
         );

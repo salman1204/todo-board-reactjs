@@ -14,7 +14,7 @@ const AddnewLabel: React.FC<AddnewLabelProps> = ({ refetch }) => {
   const onFinish = (values: { title: string }) => {
     mutate(values, {
       onSuccess: () => {
-        message.success("New Ticket Added Successfully");
+        message.success("New Label Added Successfully");
         setShowAddInput(false);
         refetch();
       },
@@ -41,7 +41,12 @@ const AddnewLabel: React.FC<AddnewLabelProps> = ({ refetch }) => {
           <Button type='primary' ghost htmlType='submit' className='me-3'>
             Add
           </Button>
-          <Button danger type='primary' ghost onClick={() => setShowAddInput(false)}>
+          <Button
+            danger
+            type='primary'
+            ghost
+            onClick={() => setShowAddInput(false)}
+          >
             Cancel
           </Button>
         </Form>
