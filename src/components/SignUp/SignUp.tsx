@@ -17,15 +17,15 @@ const SignUp: React.FC = () => {
 
   const onFinish = (values: SignupFormTypes) => {
     mutate(values, {
-      onSuccess: () => {
+      onSuccess: (data) => {
         message.success({
-          content: "Sign Up Successfully",
+          content: data.response_message,
         });
         navigate("/", { replace: true });
       },
-      onError: () => {
+      onError: (data: any) => {
         message.error({
-          content: "Something went wrong",
+          content: data?.response?.data?.response_message,
         });
       },
     });

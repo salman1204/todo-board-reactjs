@@ -20,7 +20,7 @@ const Login: React.FC = () => {
       },
       onError: () => {
         message.error({
-          content: "Something went wrong",
+          content: "Wrong login credentials",
         });
       },
     });
