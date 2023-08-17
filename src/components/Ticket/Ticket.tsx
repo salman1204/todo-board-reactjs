@@ -1,9 +1,9 @@
 import { TicketDataTypes } from "@/types/ticket-types";
 import { onDragEnd, onDragStart } from "@/utils/htmlDragDropApi";
+import { ClockCircleTwoTone } from "@ant-design/icons";
 import moment from "moment";
 import React, { useState } from "react";
 import UpdateTicket from "./UpdateTicket";
-import { ClockCircleOutlined, ClockCircleTwoTone } from '@ant-design/icons';
 
 interface TicketProps {
   ticket: TicketDataTypes;
@@ -23,10 +23,11 @@ const Ticket: React.FC<TicketProps> = ({ ticket }) => {
       onDragEnd={(e) => onDragEnd(e)}
     >
       <p
-        className='cursor-pointer break-words leading-normal flex items-center justify-between'
+        className='flex cursor-pointer items-center justify-between break-words leading-normal'
         onClick={() => setOpenUpdateModal(true)}
       >
-        {ticket.title}  {isExpiredDateToday && <ClockCircleTwoTone twoToneColor="#fb923c" />}
+        {ticket.title}
+        {isExpiredDateToday && <ClockCircleTwoTone twoToneColor='#f05a4f' />}
       </p>
 
       <UpdateTicket

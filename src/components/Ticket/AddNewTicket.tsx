@@ -42,7 +42,12 @@ const AddNewTicket: React.FC<AddNewTicketProps> = ({ label_guid, refetch }) => {
           <Button type='primary' ghost htmlType='submit' className='me-3'>
             Add
           </Button>
-          <Button danger type='primary' ghost onClick={() => setShowAddInput(false)}>
+          <Button
+            danger
+            type='primary'
+            ghost
+            onClick={() => setShowAddInput(false)}
+          >
             Cancel
           </Button>
         </Form>
