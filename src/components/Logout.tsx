@@ -1,9 +1,11 @@
+import { useQueryClient } from "@tanstack/react-query";
 import { Button } from "antd";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const Logout: React.FC = () => {
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
 
   const handleLogout = async () => {
     await localStorage.removeItem("todo_access_token");
@@ -13,7 +15,11 @@ const Logout: React.FC = () => {
       "todo_access_token"
     );
 
-    !hasAccessToken && navigate("/", { replace: true });
+    !hasAccessToken &&
+      (async () => {
+        await queryClient.clear();
+        navigate("/", { replace: true });
+      })();
   };
 
   return (
