@@ -12,6 +12,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import React from "react";
 import AddNewTicket from "../Ticket/AddNewTicket";
 import Ticket from "../Ticket/Ticket";
+import LabelTitle from "./LabelTitle";
 
 interface LabelProps {
   label: LabelDataTypes;
@@ -49,9 +50,7 @@ const Label: React.FC<LabelProps> = ({ label }) => {
         );
       }}
     >
-      <div className='mb-4 ms-3'>
-        <h4>{label.title}</h4>
-      </div>
+      <LabelTitle label={label} />
 
       {tickets?.data.map((ticket) => (
         <Ticket key={ticket.guid} ticket={ticket} />

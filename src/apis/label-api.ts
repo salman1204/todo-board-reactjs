@@ -20,3 +20,10 @@ export const getLabels = async () => {
   const { data } = await instance.get(url);
   return data as HttpResponse<LabelDataTypes[]>;
 };
+
+export const deleteLabel = async (data: { label_guid: string }) => {
+  const { data: response } = await instance.delete(
+    `${BASE_API_URL}/label/${data.label_guid}/`
+  );
+  return response;
+};

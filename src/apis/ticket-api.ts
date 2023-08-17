@@ -36,6 +36,13 @@ export const updateTicketDetails = async (
   return response as HttpResponse<TicketDataTypes>;
 };
 
+export const deleteTicket = async (data: { ticket_guid: string }) => {
+  const { data: response } = await instance.delete(
+    `${BASE_API_URL}/ticket/${data.ticket_guid}/`
+  );
+  return response;
+};
+
 export const getExpireTodayTickets = async () => {
   const url = `${BASE_API_URL}/ticket/expire-today`;
   const { data } = await instance.get(url);

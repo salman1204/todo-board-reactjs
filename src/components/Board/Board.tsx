@@ -20,7 +20,7 @@ const Board: React.FC = () => {
 
   useEffect(() => {
     totalExpireTodayTickets && warnExpireTickets(totalExpireTodayTickets);
-  }, [accessToken, totalExpireTodayTickets]);
+  }, [accessToken]);
 
   return (
     <div>

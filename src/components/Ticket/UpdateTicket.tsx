@@ -5,6 +5,7 @@ import React from "react";
 import UpdateTicketDescription from "./UpdateTicketDescription";
 import UpdateTicketExpireDate from "./UpdateTicketExpireDate";
 import UpdateTicketTitle from "./UpdateTicketTitle";
+import DeleteTicket from './DeleteTicket';
 interface UpdateTicketProps {
   openUpdateModal: boolean;
   setOpenUpdateModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -28,6 +29,7 @@ const UpdateTicket: React.FC<UpdateTicketProps> = ({
       <div className='leading-7'>
         <UpdateTicketTitle ticket={ticket} />
         <UpdateTicketExpireDate ticket={ticket} />
+        <DeleteTicket ticket={ticket} />
       </div>
       <UpdateTicketDescription ticket={ticket} />
     </Modal>

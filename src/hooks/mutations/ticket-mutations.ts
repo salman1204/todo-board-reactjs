@@ -1,4 +1,8 @@
-import { addTicket, updateTicketDetails } from "@/apis/ticket-api";
+import {
+  addTicket,
+  deleteTicket,
+  updateTicketDetails,
+} from "@/apis/ticket-api";
 import { updateTicketDataType } from "@/types/ticket-types";
 import { useMutation } from "@tanstack/react-query";
 
@@ -14,4 +18,10 @@ export const useupdateTicketDetails = () => {
       return updateTicketDetails(data.ticket_guid, data.data);
     }
   );
+};
+
+export const useDeleteTicket = () => {
+  return useMutation((data: { ticket_guid: string }) => {
+    return deleteTicket(data);
+  });
 };
