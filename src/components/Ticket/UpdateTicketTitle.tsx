@@ -2,7 +2,7 @@ import { useupdateTicketDetails } from "@/hooks/mutations/ticket-mutations";
 import { TicketDataTypes } from "@/types/ticket-types";
 import { SnippetsOutlined } from "@ant-design/icons";
 import { useQueryClient } from "@tanstack/react-query";
-import { Button, Input } from "antd";
+import { Input } from "antd";
 import React, { useCallback, useState } from "react";
 
 interface UpdateTicketTitleProps {
@@ -42,11 +42,11 @@ const UpdateTicketTitle: React.FC<UpdateTicketTitleProps> = ({ ticket }) => {
   return (
     <>
       <div className='flex items-center'>
-        <SnippetsOutlined className='me-2 ' />
+        <SnippetsOutlined className='me-2' />
         {!editTicketTitle && (
-          <h2 className='px-2' onClick={() => setEditTicketTitle(true)}>
+          <h3 className='px-2' onClick={() => setEditTicketTitle(true)}>
             {ticket?.title}
-          </h2>
+          </h3>
         )}
         {editTicketTitle && (
           <Input
@@ -61,8 +61,6 @@ const UpdateTicketTitle: React.FC<UpdateTicketTitleProps> = ({ ticket }) => {
       <h5>
         In Label: <span className='font-light'> {ticket?.label_title}</span>
       </h5>
-
-      
     </>
   );
 };

@@ -35,10 +35,10 @@ const UpdateTicketDescription: React.FC<{ ticket: TicketDataTypes }> = ({
   return (
     <div className='my-5'>
       <div className='mb-3 flex justify-between'>
-        <h2>
+        <h3>
           <MenuUnfoldOutlined className='mb-3 me-2' />
           Description
-        </h2>
+        </h3>
       </div>
 
       <div className={!editDescription ? "block" : "hidden"}>

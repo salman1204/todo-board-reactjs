@@ -13,3 +13,11 @@ export interface updateTicketDataType {
   title?: string;
   expiry_date?: string | null;
 }
+
+export interface TicketTrackHistoryTypes {
+  guid: string;
+  label_title: string;
+  ticket_title: string;
+  is_create: boolean;
+  time: string; 
+}

@@ -2,16 +2,17 @@ import { TicketDataTypes } from "@/types/ticket-types";
 import { Modal } from "antd";
 
 import React from "react";
+import DeleteTicket from "./DeleteTicket";
+import TicketTrackHistory from "./TicketTrackHistory";
 import UpdateTicketDescription from "./UpdateTicketDescription";
 import UpdateTicketExpireDate from "./UpdateTicketExpireDate";
 import UpdateTicketTitle from "./UpdateTicketTitle";
-import DeleteTicket from './DeleteTicket';
 interface UpdateTicketProps {
   openUpdateModal: boolean;
   setOpenUpdateModal: React.Dispatch<React.SetStateAction<boolean>>;
   ticket: TicketDataTypes;
 }
-const UpdateTicket: React.FC<UpdateTicketProps> = ({
+const TicketDetails: React.FC<UpdateTicketProps> = ({
   openUpdateModal,
   setOpenUpdateModal,
   ticket,
@@ -32,8 +33,9 @@ const UpdateTicket: React.FC<UpdateTicketProps> = ({
         <DeleteTicket ticket={ticket} />
       </div>
       <UpdateTicketDescription ticket={ticket} />
+      <TicketTrackHistory ticket={ticket} />
     </Modal>
   );
 };
 
-export default UpdateTicket;
+export default TicketDetails;

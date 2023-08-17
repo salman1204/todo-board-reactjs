@@ -3,7 +3,7 @@ import { onDragEnd, onDragStart } from "@/utils/htmlDragDropApi";
 import { ClockCircleTwoTone } from "@ant-design/icons";
 import moment from "moment";
 import React, { useState } from "react";
-import UpdateTicket from "./UpdateTicket";
+import TicketDetails from "./TicketDetails";
 
 interface TicketProps {
   ticket: TicketDataTypes;
@@ -16,7 +16,7 @@ const Ticket: React.FC<TicketProps> = ({ ticket }) => {
 
   return (
     <div
-      className='shadow-white-1000/100 mt-3 h-fit rounded-lg border-l-4 border-gray-900  bg-neutral-100 p-3 shadow-md hover:bg-violet-50'
+      className='shadow-white-1000/100 mt-3 h-fit rounded-lg  border-gray-900  bg-neutral-100 p-3 shadow-md hover:bg-violet-50'
       id={ticket.guid}
       draggable
       onDragStart={(e) => onDragStart(e)}
@@ -30,7 +30,7 @@ const Ticket: React.FC<TicketProps> = ({ ticket }) => {
         {isExpiredDateToday && <ClockCircleTwoTone twoToneColor='#f05a4f' />}
       </p>
 
-      <UpdateTicket
+      <TicketDetails
         openUpdateModal={openUpdateModal}
         setOpenUpdateModal={setOpenUpdateModal}
         ticket={ticket}
