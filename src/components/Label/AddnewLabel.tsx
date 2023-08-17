@@ -1,4 +1,4 @@
-import { useLabel } from "@/hooks/mutations/label-mutations";
+import { useCreateLabel } from "@/hooks/mutations/label-mutations";
 import { PlusOutlined } from "@ant-design/icons";
 import { Button, Form, Input, message } from "antd";
 import React, { useState } from "react";
@@ -9,7 +9,7 @@ interface AddnewLabelProps {
 const AddnewLabel: React.FC<AddnewLabelProps> = ({ refetch }) => {
   const [showAddInput, setShowAddInput] = useState(false);
 
-  const { mutate } = useLabel();
+  const { mutate } = useCreateLabel();
 
   const onFinish = (values: { title: string }) => {
     mutate(values, {

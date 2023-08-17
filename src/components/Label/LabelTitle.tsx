@@ -1,4 +1,7 @@
-import { useDeleteLabel } from "@/hooks/mutations/label-mutations";
+import {
+  useDeleteLabel,
+  useUpdateLabel,
+} from "@/hooks/mutations/label-mutations";
 import { LabelDataTypes } from "@/types/label-types";
 import {
   CheckOutlined,
@@ -18,14 +21,14 @@ const LabelTitle: React.FC<LabelTitleProps> = ({ label }) => {
   const [editLabelTitle, setEditLabelTitle] = useState(false);
   const [value, setValue] = useState<string>(label.title);
 
-
   const queryClient = useQueryClient();
 
-  const { mutate } = useDeleteLabel();
+  const { mutate: mutateDelete } = useDeleteLabel();
 
+  const { mutate: mutateTitle } = useUpdateLabel();
 
   const handleLabelDelete = () => {
-    mutate(
+    mutateDelete(
       {
         label_guid: label?.guid,
       },
@@ -37,6 +40,23 @@ const LabelTitle: React.FC<LabelTitleProps> = ({ label }) => {
       }
     );
   };
+
+  const handleLabelUpdate = () => {
+    mutateTitle(
+      {
+        label_guid: label?.guid,
+        data: { title: value },
+      },
+      {
+        onSuccess: () => {
+          queryClient.invalidateQueries(["label"]);
+          setEditLabelTitle(false);
+          message.success("Label Updated successfully.");
+        },
+      }
+    );
+  };
+
   return (
     <div className='mb-4 ms-2 flex items-center justify-between'>
       {!editLabelTitle && <h4>{label.title}</h4>}
@@ -71,7 +91,7 @@ const LabelTitle: React.FC<LabelTitleProps> = ({ label }) => {
         {editLabelTitle && (
           <>
             <CheckOutlined
-              // onClick={() => handleExpireDateUpdate(value)}
+              onClick={() => handleLabelUpdate()}
               className='ms-1 cursor-pointer text-amber-500 hover:text-amber-600 '
             />
 
