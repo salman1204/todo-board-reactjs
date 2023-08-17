@@ -1,4 +1,8 @@
-import { getExpireTodayTickets, getTicket, getTicketHistory } from "@/apis/ticket-api";
+import {
+  getExpireTodayTickets,
+  getTicket,
+  getTicketHistory,
+} from "@/apis/ticket-api";
 import { ticketQueryKeys } from "@/constants/queryKeys";
 import { useQuery } from "@tanstack/react-query";
 
@@ -12,7 +16,7 @@ export const useGetTicketByLabels = (label_guid = "") => {
 
 export const useGetTicketTrackHistory = (ticket_guid = "") => {
   return useQuery({
-    queryKey: ticketQueryKeys.lists(),
+    queryKey: ticketQueryKeys.history(ticket_guid),
     queryFn: () => getTicketHistory(ticket_guid),
     retry: false,
   });
