@@ -23,6 +23,25 @@ const Label: React.FC<LabelProps> = ({ label }) => {
   const queryClient = useQueryClient();
 
   const { mutate } = useupdateTicketDetails();
+
+  const handleOnDrop = (e: React.DragEvent<HTMLDivElement>) => {
+    onDrop(e);
+    let ticket_guid = e.dataTransfer.getData("text/plain");
+    mutate(
+      {
+        ticket_guid: ticket_guid,
+        data: {
+          label: label.guid,
+        },
+      },
+      {
+        onSuccess: () => {
+          queryClient.invalidateQueries(["ticket"]);
+        },
+      }
+    );
+  };
+
   return (
     <div
       className='shadow-white-1000/100 m-3 h-fit w-80 min-w-[20rem] rounded-lg bg-slate-100 p-3 shadow-md'
@@ -32,23 +51,7 @@ const Label: React.FC<LabelProps> = ({ label }) => {
         onDragEnd(e);
       }}
       onDragOver={(e) => onDragOver(e)}
-      onDrop={(e) => {
-        onDrop(e);
-        let ticket_guid = e.dataTransfer.getData("text/plain");
-        mutate(
-          {
-            ticket_guid: ticket_guid,
-            data: {
-              label: label.guid,
-            },
-          },
-          {
-            onSuccess: () => {
-              queryClient.invalidateQueries(["ticket"]);
-            },
-          }
-        );
-      }}
+      onDrop={(e) => handleOnDrop(e)}
     >
       <LabelTitle label={label} />
 
